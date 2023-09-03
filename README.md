@@ -14,12 +14,12 @@ put into same folder as the binaries you need to flash.
 esp-idf has to be installed on the system in path $HOME/esp/esp-idf (standard installation path)
 please refer to the original documentation: https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/get-started/index.html
 in terminal run:
-sudo chmod +x sudoflash-s3.sh
+sudo chmod +x sudoflash-S3.sh
 
 usage:
 open terminal in the folder containing binaries and sudoflash
 run:
-. ./sudoflash-s3.sh
+. ./sudoflash-S3.sh
 
 follow instructions as prompted (filenames can be copy-pasted, they are listed in the terminal in the step before asked to enter specific filenames)
 most common port is /dev/ttyUSB0
