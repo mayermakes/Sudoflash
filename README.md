@@ -24,4 +24,5 @@ run:
 follow instructions as prompted (filenames can be copy-pasted, they are listed in the terminal in the step before asked to enter specific filenames)
 most common port is /dev/ttyUSB0
 
+Video: https://youtu.be/sPnQViSGZeY
 
