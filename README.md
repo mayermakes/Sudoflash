@@ -26,3 +26,4 @@ most common port is /dev/ttyUSB0
 
 Video: https://youtu.be/sPnQViSGZeY
 
+TODO: make a compile script possibly using zig https://www.youtube.com/watch?v=kuZIzL0K4o4
