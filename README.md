@@ -10,6 +10,7 @@ use only at own risk
 
 installation:
 download files.
+Find ready made binaries here: https://github.com/ESP32DE/Boot-Linux-ESP32S3-Playground/tree/main/bins/S3 or compile your own.
 put into same folder as the binaries you need to flash.
 esp-idf has to be installed on the system in path $HOME/esp/esp-idf (standard installation path)
 please refer to the original documentation: https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/get-started/index.html
