@@ -30,4 +30,7 @@ most common port is /dev/ttyUSB0
 
 Video: https://youtu.be/sPnQViSGZeY
 
+ATTENTION: depending on the binaries you are flashing the terminal output can be on UART or native USB, so if one just shows the boot log, the terminal is on the other one. if you are met with a blank screen(usually when the device has already completed the boot process), press enter and #~ prompt should show up.(defualt is UART, 115200 Baud, login: root, no password)
+
+
 TODO: make a compile script possibly using zig https://www.youtube.com/watch?v=kuZIzL0K4o4
