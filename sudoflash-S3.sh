@@ -4,19 +4,34 @@ RED="\e[31m"
 GREEN="\e[32m"
 ENDCOLOR="\e[0m"
 
+cd "$(dirname "$0")"
+SCRIPT_DIR="$(pwd)"
+echo "Script directory: $SCRIPT_DIR"
 
-
-SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+#SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 echo -e "${GREEN}SUDOFLASH - a tool to Flash Linux to Sudosom-S3"
 echo -e " may also work for other ESP32-S3 boards ${ENDCOLOR}"
 echo -e "_______________________________________________"
 echo -e "${RED}Binaries must be in the same folder as this script."
 echo -e "ESP toolchain will be automatically installed/updated to: $HOME/esp/esp-idf/${ENDCOLOR}"
 
-sudo ./ESP_IDF_install.sh &&  echo -e "${GREEN}ESP-IDF installed ${ENDCOLOR}" || echo -e "${RED}error during installation${ENDCOLOR}"
+echo -e "${GREEN}updating Linux dependencies${ENDCOLOR}"
+apt-get install git wget flex bison gperf python3 python3-pip python3-venv cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0 
+echo -e "${GREEN}creating directory for Installation:${ENDCOLOR}"
+mkdir -p $HOME/esp && echo -e "${GREEN}directory created${ENDCOLOR}" || echo -e "${RED}directory already exists ${ENDCOLOR}"
+echo -e "${GREEN}Cloning latest ESP-IDF Repo${ENDCOLOR}"
+git clone -b v5.2.2 --recursive https://github.com/espressif/esp-idf.git $HOME/esp && echo -e "${GREEN}ESP idf downloaded${ENDCOLOR}" || echo -e "${RED}cannot reach github repo/ already cloned ${ENDCOLOR}" 
+echo -e "${GREEN}make install script executable${ENDCOLOR}"
+chmod +x $HOME/esp/esp-idf/install.sh
+echo -e "${GREEN}run installation${ENDCOLOR}"
+cd $HOME/esp/esp-idf/
+. $HOME/esp/esp-idf/install.sh all && echo -e "${GREEN}ESP idf installed${ENDCOLOR}" || echo -e "${RED}Error during installation -> check if $HOME/esp/esp-idf/./install.sh is set executable! ${ENDCOLOR}"
+python3 $HOME/esp/esp-idf/tools/idf_tools.py install && echo -e "${GREEN}Tools installed${ENDCOLOR}" || echo -e "${RED}Error during tool installation${ENDCOLOR}"
+echo -e "${GREEN}make export script executable${ENDCOLOR}"
+chmod +x $HOME/esp/esp-idf/export.sh
+. $HOME/esp/esp-idf/export.sh && echo -e "${GREEN}toolchain activated${ENDCOLOR}" || echo -e "${RED}error during toolchain activation${ENDCOLOR}"
 
-sudo $HOME/esp/esp-idf/export.sh && echo -e "${GREEN}toolchain activated${ENDCOLOR}" || echo -e "${RED}error during toolchain activation${ENDCOLOR}"
-cd $SCRIPT_DIR
+cd "$SCRIPT_DIR"
 
 echo -e going back to : $SCRIPT_DIR
 echo -e " Files present:"
