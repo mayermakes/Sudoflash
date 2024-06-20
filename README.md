@@ -1,6 +1,9 @@
 # Sudoflash
 Flashing tool for Sudosom
 CC-BY-SA
+
+ATTENTION: repo contains development version: onnly use the latest  release to flash !
+
 tested on Ubuntu 22.04LTS
 may work with WSL under Win10- we do not support any non free (as in freedom) operating systems.
 
@@ -23,7 +26,7 @@ Connect Esp32-S3 module via UART & native USB (best results with both ports conn
 open terminal in the folder containing binaries and sudoflash
 run:
 
-. ./sudoflash-S3.sh
+./sudoflash-S3.sh
 
 follow instructions as prompted (filenames can be copy-pasted, they are listed in the terminal in the step before asked to enter specific filenames)
 most common port is /dev/ttyUSB0
@@ -32,5 +35,6 @@ Video: https://youtu.be/sPnQViSGZeY
 
 ATTENTION: depending on the binaries you are flashing the terminal output can be on UART or native USB, so if one just shows the boot log, the terminal is on the other one. if you are met with a blank screen(usually when the device has already completed the boot process), press enter and #~ prompt should show up.(defualt is UART, 115200 Baud, login: root, no password)
 
+ATTENTION: repo contains development version: onnly use the latest  release to flash !
 
 
